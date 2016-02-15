@@ -1,0 +1,141 @@
+/*
+Copyright (c) 2015 Petr Šícho. 
+All rights reserved.
+Všechna práva vyhrazena.
+*/
+
+
+a { /*Pro hezké odkazy*/
+           text-decoration: none;
+           color: #2085C5;
+}
+
+div.nadpis {/*Nadpis*/
+            font-family: 'Courier New', thin;
+            font-size: 50px;
+            text-align: center;
+            width: 100%;
+            }
+
+div#game {
+	width: 1000px;
+	height: 500px;
+	border: solid 1px black;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 50px;
+}
+
+div#main {
+	border-right: 1px solid black;
+	width: 59.8%;
+	height: 99.9%;
+	float: left;
+}
+
+div#menu {
+	width: 40%;
+	height: 99.5%;
+	float: right;
+}
+
+div#moneydiv {
+text-align: center;
+color: lime;
+font-size: 30px;
+}
+
+span#money {
+	display: inline;
+}
+
+span#dolar {
+	display: inline;
+}
+
+div#targetdiv {
+	width: 300px;
+	height: 300px;
+	margin-left: auto;
+	margin-right: auto;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+img#target {
+	height: 100%;
+}
+
+div#shopmenu {
+	width: 100.25%;
+	height: 10%;
+	border-bottom: 1px solid black;
+	margin-left: -0.25%;
+}
+
+div#upgradesMenu {
+	width: 20%;
+	height: 100%;
+	background: blue;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: -200%;
+}
+
+div#clickersMenu {
+	width: 20%;
+	height: 100%;
+	background: green;
+	position: relative;
+}
+
+div#clickerupgradesMenu {
+	width: 20%;
+	height: 100%;
+	background: red;
+	position: relative;
+	left: 20%;
+	top: -100%;
+}
+
+div#targetsMenu {
+	width: 20%;
+	height: 100%;
+	background: purple;
+	position: relative;
+	left: 60%;
+	top: -300%;
+}
+
+div#levelMenu {
+	width: 20%;
+	height: 100%;
+	background: orange;
+	float: right;
+	position: relative;
+	top: -400%;
+
+}
+
+div#shop {
+	height: 90%;
+	width: 100.2%;
+	margin-left: -0.5%;
+	overflow-y: scroll;
+	position: relative;
+	top: -39.75%;
+}
+
+div.menuitem {
+	width: 99.5%;
+	height: 10%;
+	border-bottom: 1px solid grey;
+	background: green;
+	color: white;
+}
+div.menuitem:hover {
+	background: #27B327;
+}	
