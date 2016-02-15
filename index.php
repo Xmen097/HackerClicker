@@ -134,7 +134,7 @@
 					targets.Server.cost = 'BOUGHT'; 							//nastavení stavu na koupeno
 					menureload(); 										//znovunačtení cen
 					stat.mps = targets.Server.mps; 							//aktualizace přidávání peněz
-					$('#targetdiv').html('<img src="img/targets/Server.png" id="target">') //načtení obrázku
+					$('#targetdiv').html('<img src="img/targets/server.png" id="target">') //načtení obrázku
 					$('#target').click(function() {stat.money = parseInt(stat.money) + stat.mps;$('#money').text(stat.money);});//přičítání peněz
 					$('#Server').html('Server<div class="cost">'+targets.Server.cost+'</div>'); //aktualizace menu
 				} else {alert(message.funds);} //málo peněz
