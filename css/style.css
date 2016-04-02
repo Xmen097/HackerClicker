@@ -40,9 +40,14 @@ div#menu {
 }
 
 div#moneydiv {
-text-align: center;
-color: lime;
-font-size: 30px;
+	text-align: center;
+	color: lime;
+	font-size: 30px;
+	position: relative;
+	top: -30px;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 span#money {
@@ -59,8 +64,7 @@ div#targetdiv {
 	margin-left: auto;
 	margin-right: auto;
     position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+
     text-align: center;
 }
 
@@ -139,3 +143,28 @@ div.menuitem {
 div.menuitem:hover {
 	background: #27B327;
 }	
+
+div#progressbar {
+	width: 250px;
+	height: 20px;
+	background-color: #ddd;
+	margin-left: auto;
+	margin-right: auto;
+	position: relative;
+	top: 10%;
+}
+
+div#progress {
+	background: #4CAF50;
+	height: 100%;
+	width: 0px;
+}
+
+
+
+/*Settings CSS*/
+
+#Volume {
+	background: transparent;
+	border: 0px transparent;
+}
