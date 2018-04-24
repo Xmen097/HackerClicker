@@ -11,31 +11,61 @@ a { /*Pro hezké odkazy*/
 }
 
 div.nadpis {/*Nadpis*/
-            font-family: 'Courier New', thin;
             font-size: 50px;
             text-align: center;
             width: 100%;
             }
 
+html {
+    /*font-family: 'Courier New', thin;*/
+}
+
+i.icon {
+	font-size: 38px;
+	position: relative;
+	top: 10%;
+}
+
+i.info {
+	font-size: 15px;
+	position: relative;
+	bottom: 10px;
+	color: blue;
+}
+
+div#center {
+	font-size: 28px;
+	text-align: center;
+	border-bottom: solid 3px black;
+}
+
+.menuHeaderItem {
+	text-align: center;
+}
+
 div#game {
 	width: 1000px;
-	height: 500px;
+	height: 480px;
 	border: solid 1px black;
-	margin-left: auto;
-	margin-right: auto;
 	margin-top: 50px;
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 div#main {
 	border-right: 1px solid black;
-	width: 59.8%;
+	width: 49.8%;
 	height: 99.9%;
 	float: left;
 }
 
 div#menu {
-	width: 40%;
-	height: 99.5%;
+	width: 49.885%;
+	height: 99.99%;
 	float: right;
 }
 
@@ -59,17 +89,25 @@ span#dolar {
 }
 
 div#targetdiv {
-	width: 300px;
-	height: 300px;
-	margin-left: auto;
-	margin-right: auto;
+	width: 30%;
+	height: 30%;
+	position: relative;
+	left: 10%;
     position: relative;
-
+	animation: target 1s ease-in-out 0s infinite;
     text-align: center;
 }
 
+
 img#target {
 	height: 100%;
+	width: 100%;
+}
+
+@keyframes target {
+	0%   {width: 50%;height: 50%;left: 24.5%; top: 5%;}
+	50%  {width: 49%;height: 49%;left: 25%; top: 5.5%;}
+	100% {width: 50%;height: 50%;left: 24.5%; top: 5%;}
 }
 
 div#shopmenu {
@@ -133,38 +171,118 @@ div#shop {
 	top: -39.75%;
 }
 
+span.cost {
+	position: relative;
+	clear: left;
+}
+
+span.upgrade {
+	position: relative;
+	float: right;
+	clear: right;
+	right: 5%;
+	top: -45%;
+}
+
+span.status {
+	position: relative;
+	float: right;
+	clear: right;
+	top: -40%;
+	right: 5%
+}
+
+img.icon {
+	width: 10%;
+	height: 90%;
+	top: 5%;
+	float: left;
+	margin-right: 1%;
+	margin-left: 1%;
+}
+
+div#cpsDiv {
+	width: 50%;
+	font-size: 22px;
+	position: relative;
+	top: -5%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	color: lime;
+}
+
+span.name {
+	position: relative;
+	clear: left;	
+}
+
 div.menuitem {
 	width: 99.5%;
 	height: 10%;
 	border-bottom: 1px solid grey;
 	background: green;
 	color: white;
+	text-align: left;
 }
 div.menuitem:hover {
 	background: #27B327;
 }	
 
 div#progressbar {
-	width: 250px;
+	width: 300px;
 	height: 20px;
 	background-color: #ddd;
-	margin-left: auto;
-	margin-right: auto;
-	position: relative;
-	top: 10%;
+	position: absolute;
+	top: 520px;
+	left: 105px;
+}
+
+div#infoHolder {
+	width: 498px;
+	position: absolute;
+	top: 560px;
+	text-align: center;
 }
 
 div#progress {
 	background: #4CAF50;
 	height: 100%;
-	width: 0px;
+	width: 0%;
 }
 
+div#rollingText{
+	position: absolute;
+	text-align: center;
+	top: 340px;
+	width: 498px;
+	font-size: 26px;
+	color: orange;
+	text-shadow:     
+   -0.8px -0.8px 0 #000,
+    0.8px -0.8px 0 #000,
+   -0.8px 0.8px 0 #000,
+    0.8px 0.8px 0 #000;
+    transform: rotate(0deg);
+    text-indent: 0px;
+}
 
+.textAnimation{
+	animation: textAnimation 0.3s linear;
+}
 
-/*Settings CSS*/
+@keyframes textAnimation {
+	0% 		{font-size: 36;transform: rotate(360deg)},
+	100%	{font-size: 26;transform: rotate(0deg)}
+}
 
 #Volume {
 	background: transparent;
 	border: 0px transparent;
+	outline: none;
+	width: 30px;
+}
+
+#Volume:active{
+	outline: none;
 }
