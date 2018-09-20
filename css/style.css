@@ -89,19 +89,29 @@ span#dolar {
 }
 
 div#targetdiv {
+<<<<<<< HEAD
 	width: 50%;
 	height: 50%;
 	position: relative;
 	left: 24.5%;
 	top: 5%;
+=======
+	width: 30%;
+	height: 30%;
+	position: relative;
+	left: 10%;
+    position: relative;
+>>>>>>> eedcc85fc6705ca50a1eee2c5d3d00133440eb6d
 	animation: target 1s ease-in-out 0s infinite;
     text-align: center;
 }
+
 
 img#target {
 	height: 100%;
 	width: 100%;
 }
+<<<<<<< HEAD
 div#targetdivClicked {
 	width: 50%;
 	height: 50%;
@@ -115,10 +125,14 @@ div#targetdivClicked {
 @keyframes targetClicked {
 	33% {width: 48%;height: 48%;left: 25.5%; top: 6%;}
 }
+=======
+
+>>>>>>> eedcc85fc6705ca50a1eee2c5d3d00133440eb6d
 @keyframes target {
 	0%   {width: 50%;height: 50%;left: 24.5%; top: 5%;}
 	50%  {width: 49%;height: 49%;left: 25%; top: 5.5%;}
 	100% {width: 50%;height: 50%;left: 24.5%; top: 5%;}
+<<<<<<< HEAD
 }
 
 div#targetdivAliens {
@@ -133,6 +147,8 @@ div#targetdivAliens {
 	-o-transform-origin: center center;
 	animation: targetAliens 20s linear 0s 1;
     text-align: center;
+=======
+>>>>>>> eedcc85fc6705ca50a1eee2c5d3d00133440eb6d
 }
 @keyframes targetAliens {
 	3% {transform: rotate(55deg);}
@@ -253,6 +269,52 @@ span.status {
 }
 
 img.icon {
+	height: 90%;
+	top: 5%;
+	float: left;
+	margin-right: 1%;
+	margin-left: 1%;
+}
+
+div#cpsDiv {
+	width: 50%;
+	font-size: 22px;
+	position: relative;
+	top: -5%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	color: lime;
+}
+
+span.name {
+	position: relative;
+	clear: left;	
+}
+
+span.cost {
+	position: relative;
+	clear: left;
+}
+
+span.upgrade {
+	position: relative;
+	float: right;
+	clear: right;
+	right: 5%;
+	top: -45%;
+}
+
+span.status {
+	position: relative;
+	float: right;
+	clear: right;
+	top: -40%;
+	right: 5%
+}
+
+img.icon {
+	width: 10%;
 	height: 90%;
 	top: 5%;
 	float: left;
