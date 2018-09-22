@@ -19,9 +19,9 @@
 		priceLower: 1,
 		priceLowerIndex: 0.95,
 		targetHigher: 1,
-		targetHigherIndex: 1.1885,
+		targetHigherIndex: 1.192,
 		cpsHigher: 1,
-		cpsHigherIndex: 1.2,
+		cpsHigherIndex: 1.192,
 		progressLower: 0,
 		progressLowerIndex: 1,
 		chanceIndex: 0.5,
@@ -47,9 +47,9 @@
 		PC: 	{cost: 1500000, 	   	   		name: 'Stolní počítač', 	    mpc: 20000,        progress: 19  },
 		Server: {cost: 140000000, 	   			name: 'Server', 			    mpc: 400000,       progress: 25  },
 		Company:{cost: 80000000000,       		name: 'Společnost', 		    mpc: 4000000,      progress: 31  },
-		Bank:   {cost: 2000000000000,      		name: 'Banka', 			     	mpc: 100000000,    progress: 37  },
-		State:  {cost: 800000000000000,     	name: 'Stát',					mpc: 5000000000,   progress: 43  },
-		World:  {cost: 20000000000000000,/*15*/ name: 'Svět', 					mpc: 80000000000,  progress: 51  },
+		Bank:   {cost: 3000000000000,      		name: 'Banka', 			     	mpc: 100000000,    progress: 37  },
+		State:  {cost: 800000000000000,     	name: 'Stát',					mpc: 6000000000,   progress: 43  },
+		World:  {cost: 30000000000000000,/*15*/ name: 'Svět', 					mpc: 80000000000,  progress: 51  },
 		Secret: {cost: 5585610000000000000,    name: 'Tajemství', 				mpc: 999999999999999,			   progress: 301 }
 	}
 	function targetsReload() {
@@ -499,17 +499,17 @@
 		moneyStr = String(Math.round(money));
 
 		if(moneyStr.length < 4) {
-			return precision ? Math.round(money*10)/10 : Math.round(money);
+			return precision ? (Math.round(money*10)/10) : Math.round(money);
 		} else if(moneyStr.length >= 16) {
-			return Math.round(money/10000000000000)/100+" biliard "
+			return (Math.round(money/10000000000000)/100).toFixed(2)+" biliard "
 		} else if(moneyStr.length >= 13) {
-			return Math.round(money/10000000000)/100+" bilionů "
+			return (Math.round(money/10000000000)/100).toFixed(2)+" bilionů "
 		} else if(moneyStr.length >= 10) {
-			return Math.round(money/10000000)/100+" miliard "
+			return (Math.round(money/10000000)/100).toFixed(2)+" miliard "
 		} else if(moneyStr.length >= 7) {
-			return Math.round(money/10000)/100+" milionů "
+			return (Math.round(money/10000)/100).toFixed(2)+" milionů "
 		} else if(moneyStr.length >= 4) {
-			return Math.round(money/10)/100+" tisíc "
+			return (Math.round(money/10)/100).toFixed(2)+" tisíc "
 		}  
 	}
 
