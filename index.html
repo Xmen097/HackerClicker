@@ -163,7 +163,7 @@
 			if(stat.leakMultiplier != stat.maxLeakMultiplier && !stat.police) 
 				{
 				progress = parseFloat($("#progress").css("width")) / parseFloat($("#progressbar").css('width')) * 100
-				progress += 1/Math.max(stat.progress-stat.progressLower-1, 0) * 100;
+				progress += 100/Math.max(stat.progress-stat.progressLower-1, 0);
 				if (progress > 100) {
 					$(".targetdiv")[0].id="targetdivClicked";
 					progress = 0;
@@ -223,7 +223,7 @@
 		if(stat.leakMultiplier != stat.maxLeakMultiplier && !stat.police) 
 			{
 			progress = parseFloat($("#progress").css("width")) / parseFloat($("#progressbar").css('width')) * 100
-			progress += (2 + stat.progressLower)/stat.progress * 100;
+			progress += 100/Math.max(stat.progress-stat.progressLower-1, 0);
 			if (progress > 100) {
 				progress = 0;
 				stat.money += (stat.mpc + stat.mpc * stat.targetHigher);
