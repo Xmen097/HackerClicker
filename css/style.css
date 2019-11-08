@@ -84,7 +84,7 @@ span#money {
 	display: inline;
 }
 
-span#dolar {
+span.dolar {
 	display: inline;
 }
 
@@ -228,7 +228,7 @@ div#shop {
 	margin-left: -0.5%;
 	overflow-y: scroll;
 	position: relative;
-	top: 0%;
+	top: 0;
 }
 
 span.cost {
@@ -307,7 +307,7 @@ div#infoHolder {
 div#progress {
 	background: #4CAF50;
 	height: 100%;
-	width: 0%;
+	width: 0;
 }
 
 div#rollingText{
@@ -331,8 +331,8 @@ div#rollingText{
 }
 
 @keyframes textAnimation {
-	0% 		{font-size: 36;transform: rotate(360deg)},
-	100%	{font-size: 26;transform: rotate(0deg)}
+	0% 		{font-size: 36px;transform: rotate(360deg)}
+	100%	{font-size: 26px;transform: rotate(0deg)}
 }
 
 #Volume {

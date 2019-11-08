@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="cs">
 <head>
 	<script src="libs/jquery.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 	<meta charset="Utf-8">
 	<link rel="stylesheet" href="libs/font awesome/css/font-awesome.min.css">
-	<script type="text/javascript" src="libs/jquery.js"></script>
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 <script type="text/javascript">
 $(document).ready(function() { //anti-console
@@ -31,13 +28,13 @@ $(document).ready(function() { //anti-console
 		maxLeakMultiplier: 1.25,
 		police: 0,
 		clickStatus: 1,
-		lastClick:0,
-	}
+		lastClick:0
+	};
 	var other = {
 		unknown: '<div class="menuitem" id="Unknown">??????????<div class="cost">??????????</div></div>',
 		max: "MAX",
 		bought: "KOUPENO"
-	}
+	};
 
 	var targets = {
 		MP3: 	{cost: other.bought,   			name: 'MP3 Přehrávač', 	     	mpc: 1,  	       progress: 2   },
@@ -51,13 +48,13 @@ $(document).ready(function() { //anti-console
 		State:  {cost: 800000000000000,     	name: 'Stát',					mpc: 6000000000,   progress: 43  },
 		World:  {cost: 30000000000000000,/*15*/ name: 'Svět', 					mpc: 80000000000,  progress: 51  },
 		Secret: {cost: 5585610000000000000,    name: 'Tajemství', 				mpc: 999999999999999,			   progress: 301 }
-	}
+	};
 	function targetsReload() {
 		for(var key in targets) {
-			if(targets[key].cost == other.bought){
-				targets[key].html = '<div class="menuitem" id="'+key+'"><img class="icon" src="img/targets/'+key+'.png"></img><span class="name">'+targets[key].name+'</span><br><span class="cost">'+targets[key].cost+'</span><span class="upgrade">'+showMoneyShortened(Math.round(targets[key].mpc*stat.targetHigher))+'$/hack</span></div>';
+			if(targets[key].cost === other.bought){
+				targets[key].html = '<div class="menuitem" id="'+key+'"><img class="icon" src="img/targets/'+key+'.png" alt="target"/><span class="name">'+targets[key].name+'</span><br><span class="cost">'+targets[key].cost+'</span><span class="upgrade">'+showMoneyShortened(Math.round(targets[key].mpc*stat.targetHigher))+'$/hack</span></div>';
 			} else {
-				targets[key].html = '<div class="menuitem" id="'+key+'"><img class="icon" src="img/targets/'+key+'.png"></img><span class="name">'  +targets[key].name+'</span><br><span class="cost">'   +showMoneyShortened(Math.round(targets[key].cost*stat.priceLower))+'$</span><span class="upgrade">'    +showMoneyShortened(Math.round(targets[key].mpc*stat.targetHigher))+'$/hack</span></div>';
+				targets[key].html = '<div class="menuitem" id="'+key+'"><img class="icon" src="img/targets/'+key+'.png" alt="target"/><span class="name">'  +targets[key].name+'</span><br><span class="cost">'   +showMoneyShortened(Math.round(targets[key].cost*stat.priceLower))+'$</span><span class="upgrade">'    +showMoneyShortened(Math.round(targets[key].mpc*stat.targetHigher))+'$/hack</span></div>';
 			}
 		}
 	}
@@ -75,10 +72,10 @@ $(document).ready(function() { //anti-console
 		Hacker:    		{cost: 120000000000,         name: 'Hacker', 			     	mps: 1000000,   amount: 0    },
 		Anonymous: 		{cost: 8000000000000,        name: 'Anonymous',					mps: 10000000,  amount: 0 	 },
 		AI: 			{cost: 400000000000000,/*14*/name: 'Vládní umělá inteligence',  mps: 100000000, amount: 0 	 }
-	}  			
+	};		
 	function clickersReload() {
 		for(var key in clickers) {
-			clickers[key].html = '<div class="menuitem" id="'+key+'"><img class="icon" src="img/clickers/'+key+'.png"></img><span class="name">'  +clickers[key].name+'</span><br><span class="status">'+ clickers[key].amount +'x</span><span class="cost">'   +showMoneyShortened(Math.round(clickers[key].cost*stat.priceLower))+'$</span><span class="upgrade">'    +showMoneyShortened(clickers[key].mps*stat.cpsHigher, 10)+'$/s</span></div>';
+			clickers[key].html = '<div class="menuitem" id="'+key+'"><img class="icon" src="img/clickers/'+key+'.png" alt="clicker"/><span class="name">'  +clickers[key].name+'</span><br><span class="status">'+ clickers[key].amount +'x</span><span class="cost">'   +showMoneyShortened(Math.round(clickers[key].cost*stat.priceLower))+'$</span><span class="upgrade">'    +showMoneyShortened(clickers[key].mps*stat.cpsHigher, 10)+'$/s</span></div>';
 		}
 	}
 	clickersReload();
@@ -95,14 +92,14 @@ $(document).ready(function() { //anti-console
 		Hacker:    		{cost: 1200000000000,		  name: 'Delší praxe', 				maxAmount: 10,  	amount: 0 },
 		Anonymous: 		{cost: 80000000000000,     	  name: 'Více členů',				maxAmount: 10,  	amount: 0 },
 		AI:  			{cost: 4000000000000000,/*15*/name: 'Chytřejší neurony', 		maxAmount: 10,  	amount: 0 }
-	}
+	};
 	function clickerUpgradesReload() {
 		for(var key in clickerUpgrades) {
 			if(typeof clickerUpgrades[key].cost == "number")
 			{
-				clickerUpgrades[key].html =  '<div class="menuitem" id="'+key+'"><img class="icon" src="img/clickerUpgrades/'+key+'.png"><span class="name">'      +clickerUpgrades[key].name+'</span><br><span class="status">'    +clickerUpgrades[key].amount+'/'+clickerUpgrades[key].maxAmount+'x</span><span class="cost">'    	 +showMoneyShortened(Math.round(clickerUpgrades[key].cost*stat.priceLower))+'$</span><span class="upgrade">'    	 +clickers[key].name+' $/s*2</span></div>';
+				clickerUpgrades[key].html =  '<div class="menuitem" id="'+key+'"><img class="icon" src="img/clickerUpgrades/'+key+'.png" alt="clicker upgrade"><span class="name">'      +clickerUpgrades[key].name+'</span><br><span class="status">'    +clickerUpgrades[key].amount+'/'+clickerUpgrades[key].maxAmount+'x</span><span class="cost">'    	 +showMoneyShortened(Math.round(clickerUpgrades[key].cost*stat.priceLower))+'$</span><span class="upgrade">'    	 +clickers[key].name+' $/s*2</span></div>';
 			}else {
-				clickerUpgrades[key].html =  '<div class="menuitem" id="'+key+'"><img class="icon" src="img/clickerUpgrades/'+key+'.png"><span class="name">'      +clickerUpgrades[key].name+'</span><br><span class="status">'    +clickerUpgrades[key].amount+'/'+clickerUpgrades[key].maxAmount+'x</span><span class="cost">'    	 +clickerUpgrades[key].cost+'</span><span class="upgrade">'    	 +clickers[key].name+' $/s*2</span></div>';
+				clickerUpgrades[key].html =  '<div class="menuitem" id="'+key+'"><img class="icon" src="img/clickerUpgrades/'+key+'.png" alt="clicker upgrade"><span class="name">'      +clickerUpgrades[key].name+'</span><br><span class="status">'    +clickerUpgrades[key].amount+'/'+clickerUpgrades[key].maxAmount+'x</span><span class="cost">'    	 +clickerUpgrades[key].cost+'</span><span class="upgrade">'    	 +clickers[key].name+' $/s*2</span></div>';
 			}
 		}
 	}
@@ -117,14 +114,14 @@ $(document).ready(function() { //anti-console
 		Leaks: 			{cost: 256, name: 'Častější bezpečnostní trhliny',  maxAmount: 50, amount: 0, description: "Větší šance na objevení trhliny"  },
 		Cops: 			{cost: 256, name: 'Podplacení policie', 			maxAmount: 50, amount: 0, description: "Menší šance policejního průzkumu" },
 		Helper:        	{cost: 512, name: 'Pomocník', 		     			maxAmount: 50, amount: 0, description: "Pomáhá vám s hackováním" 		  }
-	}
+	};
 	function upgradesReload() {
 		for(var key in upgrades) {
 			if(typeof upgrades[key].cost == "number")
 			{
-				upgrades[key].html =  '<div class="menuitem" id="'+key+'"><img class="icon" src="img/upgrades/'+key+'.png"><span class="name">'        +upgrades[key].name+'</span><br><span class="status">'      +upgrades[key].amount+'/'+upgrades[key].maxAmount+'x</span><span class="cost">'    	   +showMoneyShortened(Math.round(upgrades[key].cost*stat.priceLower))+'$</span><span class="upgrade">'    	 +upgrades[key].description+'</span></div>';
+				upgrades[key].html =  '<div class="menuitem" id="'+key+'"><img class="icon" src="img/upgrades/'+key+'.png" alt="upgrade"><span class="name">'        +upgrades[key].name+'</span><br><span class="status">'      +upgrades[key].amount+'/'+upgrades[key].maxAmount+'x</span><span class="cost">'    	   +showMoneyShortened(Math.round(upgrades[key].cost*stat.priceLower))+'$</span><span class="upgrade">'    	 +upgrades[key].description+'</span></div>';
 			}else {
-				upgrades[key].html =  '<div class="menuitem" id="'+key+'"><img class="icon" src="img/upgrades/'+key+'.png"><span class="name">'        +upgrades[key].name+'</span><br><span class="status">'      +upgrades[key].amount+'/'+upgrades[key].maxAmount+'x</span><span class="cost">'    	   +upgrades[key].cost+'</span><span class="upgrade">'    	 +upgrades[key].description+'</span></div>';
+				upgrades[key].html =  '<div class="menuitem" id="'+key+'"><img class="icon" src="img/upgrades/'+key+'.png" alt="upgrade"><span class="name">'        +upgrades[key].name+'</span><br><span class="status">'      +upgrades[key].amount+'/'+upgrades[key].maxAmount+'x</span><span class="cost">'    	   +upgrades[key].cost+'</span><span class="upgrade">'    	 +upgrades[key].description+'</span></div>';
 			}
 		}
 	}
@@ -137,7 +134,7 @@ $(document).ready(function() { //anti-console
 		Upgrades: 		  {Seller: "Kamarád prodejce vám vždy dá trochu lepší cenu. Menší finanční dárek vám může zajistit slevu na všechny jeho produkty.", Target: "Speciální software na vyhledávání bohatších cílů. Čím bohatší cíl, tím více pěnez dostanete z jeho hackování", Tax: "Peníze zasláné na účet ministerstva financí by vám pohly pomoci získat menší slevu při danění vašich hackerských výdělků. Pomocníci budou vydělávat více.", Password: "Slovník často používaných hesel. Díky němu je hackování výrazně jednoduší", Leaks: "Najmete si speciálně školeného člověka na vyhledávání bezpečnostních trhlin. Díky němu se objevují častěji", Cops: "Kamarád policista vás za malou úplatu varuje před vaším prohledáváním. Menší šance policejního průzkumu", Helper: "Někdo, kdo za vás občas klikne a pomůže vám hacknout váš cíl."},
 		Events:  		  {Leak: "Čas od času někdo objeví zásadní chybu v softwaru - bezpečnostní trhlinu. Nebude trvat dlouho, než se opraví. Využijte toho a získejte velké množství peněz.", Police: "Policie má podezření, že jste hacker. Naštěstí nemá žádný důkaz. Na chvíli přestaňte hackovat, nebo budete muset platit velké pokuty."},
 		Menus: 			  {Targets: "Cíle pro vaše hackování, čím je těžší cíl hacknout, tím větší bude odměna.", Clickers: "Pomocníci, kteří vám každou sekundu vydělají peníze. Čím víc jich máte, tím víc vyděláváte.", ClickerUpgrades: "Když vylepšíte své pomocníky budou vydělávat mockrát více.", Upgrades: "Zde se dá vylepšit skoro cokoliv, od zjednodušení hackování po zlevnění všech věcí v obchodě."}
-	}
+	};
 
 	var message = {
 		already: 'Již KOUPENO!',
@@ -147,12 +144,12 @@ $(document).ready(function() { //anti-console
 		max: 	 'Již koupeno maximální množství',
 		leak:    'Bezpečnostní trhlina objevena!',
 		police:  'Pozor! Policejní kontrola'
-	}
-		infoTimeout = 0;
+	};
+	
+	var infoTimeout = 0;
 	function Info(data) {
 		clearTimeout(infoTimeout);
-		$("#info").html(data);
-		$("#info").hide().fadeIn(100);
+		$("#info").html(data).hide().fadeIn(100);
 		infoTimeout = setTimeout(function() {
 			$("#info").fadeOut(500);
 		}, 3000);
@@ -160,9 +157,10 @@ $(document).ready(function() { //anti-console
 
 	function Target() {
 		$('.target').click(function() {
-			if(stat.leakMultiplier != stat.maxLeakMultiplier && !stat.police) 
+			if(stat.leakMultiplier !== stat.maxLeakMultiplier && !stat.police) 
 				{
-				progress = parseFloat($("#progress").css("width")) / parseFloat($("#progressbar").css('width')) * 100
+				var progressElement = $("#progress");
+				var progress = parseFloat(progressElement.css("width")) / parseFloat($("#progressbar").css('width')) * 100;
 				progress += 100/Math.max(stat.progress-stat.progressLower-1, 0);
 				if (progress > 100) {
 					$(".targetdiv")[0].id="targetdivClicked";
@@ -170,7 +168,7 @@ $(document).ready(function() { //anti-console
 					stat.money += (stat.mpc * stat.targetHigher);
 					stat.totalMoney += (stat.mpc * stat.targetHigher)
 				}
-				$('#progress').css('width', progress+"%");
+					progressElement.css('width', progress+"%");
 			} else if(!stat.police) {
 				stat.money += (stat.mpc * stat.targetHigher) * stat.leakMultiplier;
 				stat.totalMoney += (stat.mpc * stat.targetHigher) * stat.leakMultiplier;
@@ -199,42 +197,45 @@ $(document).ready(function() { //anti-console
 		upgrades.Helper.maxAmount = 0;
 		upgradesReload();
 		$('.target').click(function() {
-			progress = parseFloat($("#progress").css("width")) / parseFloat($("#progressbar").css('width')) * 100
+			var progressElement = $("#progress");
+			var progressBarElement = $("#progressbar");
+			var progress = parseFloat(progressElement.css("width")) / parseFloat(progressBarElement.css('width')) * 100;
 			progress += (2 + stat.progressLower)/stat.progress * 100;
 			if (progress > 100) {
 				progress=0;
-				$("#progressbar")[0].style.display="none"
-				$("#infoHolder")[0].style.display="none"
+				progressBarElement[0].style.display="none";
+				$("#infoHolder")[0].style.display="none";
 				$(".targetdiv")[0].id="targetdivAliens";
-				setTimeout(function(){$("#main")[0].style.border="0px"}, 4000)
-				setTimeout(function(){$("#cpsDiv")[0].style.display="none"}, 6500)
-				setTimeout(function(){$("#moneydiv")[0].style.display="none"}, 7000)
-				setTimeout(function(){$("#clickersMenu")[0].style.opacity=0;$("#shopmenu")[0].style.border="0px"}, 11500)
-				setTimeout(function(){$("#clickerupgradesMenu")[0].style.opacity=0}, 12000)
-				setTimeout(function(){$("#upgradesMenu")[0].style.opacity=0}, 13000)
-				setTimeout(function(){$("#targetsMenu")[0].style.opacity=0}, 13500)
-				setTimeout(function(){$("#shop")[0].style.opacity=0}, 13600)
-				setTimeout(function(){$("#Volume")[0].style.opacity=0;$("#game")[0].style.border="0px"}, 14800)
+				setTimeout(function(){$("#main")[0].style.border="0px"}, 4000);
+				setTimeout(function(){$("#cpsDiv")[0].style.display="none"}, 6500);
+				setTimeout(function(){$("#moneydiv")[0].style.display="none"}, 7000);
+				setTimeout(function(){$("#clickersMenu")[0].style.opacity="0";$("#shopmenu")[0].style.border="0px"}, 11500);
+				setTimeout(function(){$("#clickerupgradesMenu")[0].style.opacity="0"}, 12000);
+				setTimeout(function(){$("#upgradesMenu")[0].style.opacity="0"}, 13000);
+				setTimeout(function(){$("#targetsMenu")[0].style.opacity="0"}, 13500);
+				setTimeout(function(){$("#shop")[0].style.opacity="0"}, 13600);
+				setTimeout(function(){$("#Volume")[0].style.opacity="0";$("#game")[0].style.border="0px"}, 14800);
 			}
-			$('#progress').css('width', progress+"%");
+			progressElement.css('width', progress+"%");
 		});
 	}
 	function AutoClicker() {		
-		if(stat.leakMultiplier != stat.maxLeakMultiplier && !stat.police) 
+		if(stat.leakMultiplier !== stat.maxLeakMultiplier && !stat.police) 
 			{
-			progress = parseFloat($("#progress").css("width")) / parseFloat($("#progressbar").css('width')) * 100
+			var progressElement = $("#progress");
+			var progress = parseFloat(progressElement.css("width")) / parseFloat($("#progressbar").css('width')) * 100;
 			progress += 100/Math.max(stat.progress-stat.progressLower-1, 0);
 			if (progress > 100) {
 				progress = 0;
 				stat.money += (stat.mpc + stat.mpc * stat.targetHigher);
 				stat.totalMoney += (stat.mpc + stat.mpc * stat.targetHigher);
 			}
-			$('#progress').css('width', progress+"%");
-		} else if(stat.leakMultiplier == stat.maxLeakMultiplier) {
+				progressElement.css('width', progress+"%");
+		} else if(stat.leakMultiplier === stat.maxLeakMultiplier) {
 			stat.money += ((stat.mpc + stat.mpc * stat.targetHigher) * stat.leakMultiplier);
 			stat.totalMoney += ((stat.mpc + stat.mpc * stat.targetHigher) * stat.leakMultiplier);
 		}
-		if(stat.clickStatus==1) {
+		if(stat.clickStatus === 1) {
 			stat.clickStatus = 2;
 			$(".click")[0].id = "click2";
 		} else {
@@ -246,21 +247,22 @@ $(document).ready(function() { //anti-console
 		}
 
 	function targetsfunction() {
-		a=0
-		items=Array();
-		$("#shop").html('<div id=center>Cíle<abbr title="'+help.Menus.Targets+'"><i class="info fa fa-question-circle-o"></i></abbr></div>')
+		var a = 0;
+		var items = Array();
+		var shop = $("#shop");
+		shop.html('<div id=center>Cíle<abbr title="'+help.Menus.Targets+'"><i class="info fa fa-question-circle-o"></i></abbr></div>');
 		for(var key in targets) {
-			items[a] = key
+			items[a] = key;
 			a++;
 			if (targets.hasOwnProperty(key)) {
     			if(unknown) {
-    				$('#shop').html($('#shop').html()+ "<abbr title='"+message.unknown+"'>" +other.unknown+"</abbr>");
+					shop.html(shop.html()+ "<abbr title='"+message.unknown+"'>" +other.unknown+"</abbr>");
     				break;
     			}
-    			if(targets[key].cost == other.bought) {
-    				$("#shop").html($("#shop").html() + "<abbr title='"+help.Targets[key]+"'>" +targets[key].html+"</abbr>");
+    			if(targets[key].cost === other.bought) {
+					shop.html(shop.html() + "<abbr title='"+help.Targets[key]+"'>" +targets[key].html+"</abbr>");
     			}else {
-    				$('#shop').html($('#shop').html() + "<abbr title='"+help.Targets[key]+"'>" +targets[key].html+"</abbr>");
+					shop.html(shop.html() + "<abbr title='"+help.Targets[key]+"'>" +targets[key].html+"</abbr>");
     				var unknown = 1;
     			}
     		}
@@ -271,15 +273,15 @@ $(document).ready(function() { //anti-console
 		$('#Unknown').click(function() {
 			Info(message.unknown);
 		});
-		for(var a=0;a < items.length;a++) {
+		for(a=0;a < items.length;a++) {
 			$('#'+items[a]).click(function() {
 				var index;
 				for(var b=0;b < items.length;b++) {
-					if($(this).attr('id') == items[b]) {
+					if($(this).attr('id') === items[b]) {
 						index = items[b];
 					}
 				}
-				if (targets[index].cost == other.bought) {
+				if (targets[index].cost === other.bought) {
 					Info(message.already);
 				} //je KOUPENO?
 				else if (stat.money >= targets[index].cost*stat.priceLower) {
@@ -289,11 +291,11 @@ $(document).ready(function() { //anti-console
 					targets[index].cost = other.bought; 							//nastavení stavu na KOUPENO
 					stat.mpc = targets[index].mpc;
 					stat.progress = targets[index].progress; 							//aktualizace přidávání peněz
-					if(index != "Secret") {
-						$('#targetdiv').html('<img src="img/targets/'+index+'.png" id="target" class="target">') //načtení obrázku
+					if(index !== "Secret") {
+						$('#targetdiv').html('<img src="img/targets/'+index+'.png" id="target" class="target" alt="target">'); //načtení obrázku
 						Target();
 					} else {
-						$('#targetdiv').html('<img src="img/targets/Ufo.png" id="target" class="target">') //načtení obrázku
+						$('#targetdiv').html('<img src="img/targets/Ufo.png" id="target" class="target" alt="secret">'); //načtení obrázku
 						Aliens();
 					}
 					targetsReload();
@@ -306,22 +308,23 @@ $(document).ready(function() { //anti-console
 		}
 	}
 	function clickersfunction() {
-		a=0
+		var a = 0;
 		var unknown=false;
-		items=Array();
-		$("#shop").html('<div id=center>Pomocníci<abbr title="'+help.Menus.Clickers+'"><i class="info fa fa-question-circle-o"></i></abbr></div>')
+		var items=Array();
+		var shop = $("#shop");
+		shop.html('<div id=center>Pomocníci<abbr title="'+help.Menus.Clickers+'"><i class="info fa fa-question-circle-o"></i></abbr></div>');
 		for(var key in clickers) {
-			items[a] = key
+			items[a] = key;
 			a++;
     		if (clickers.hasOwnProperty(key)) {
     			if(unknown) {
-    				$('#shop').html($('#shop').html()+ "<abbr title='"+message.unknown+"'>" +other.unknown+"</abbr>");
+					shop.html(shop.html()+ "<abbr title='"+message.unknown+"'>" +other.unknown+"</abbr>");
     				break;
     			}
     			if(clickers[key].amount > 0) {
-    				$("#shop").html($("#shop").html() + "<abbr title='"+help.Clickers[key]+"'>" +clickers[key].html+"</abbr>")
+					shop.html(shop.html() + "<abbr title='"+help.Clickers[key]+"'>" +clickers[key].html+"</abbr>")
     			}else {
-    				$('#shop').html($('#shop').html() + "<abbr title='"+help.Clickers[key]+"'>" +clickers[key].html+"</abbr>");
+					shop.html(shop.html() + "<abbr title='"+help.Clickers[key]+"'>" +clickers[key].html+"</abbr>");
     				unknown = true;
     			}
     		}
@@ -329,11 +332,11 @@ $(document).ready(function() { //anti-console
 		$('#Unknown').click(function() {
 			Info(message.unknown);
 		});
-		for(var a=0;a < items.length;a++) {
+		for(a=0;a < items.length;a++) {
 			$('#'+items[a]).click(function() {
 				var index;
 				for(var b=0;b < items.length;b++) {
-					if($(this).attr('id') == items[b]) {
+					if($(this).attr('id') === items[b]) {
 						index = items[b];
 					}
 				}
@@ -355,17 +358,18 @@ $(document).ready(function() { //anti-console
 	}
 
 	function clickerUpgradesfunction() {
-		a=0
-		items=Array();
-		$("#shop").html('<div id=center>Vylepšení pomocníků<abbr title="'+help.Menus.ClickerUpgrades+'"><i class="info fa fa-question-circle-o"></i></abbr></div>')
+		var a = 0;
+		var items=Array();
+		var shop = $("#shop");
+		shop.html('<div id=center>Vylepšení pomocníků<abbr title="'+help.Menus.ClickerUpgrades+'"><i class="info fa fa-question-circle-o"></i></abbr></div>');
 		for(var key in clickerUpgrades) {
-			items[a] = key
+			items[a] = key;
 			a++;
     		if (clickerUpgrades.hasOwnProperty(key)) {
     			if(clickers[key].amount > 0) {
-    				$("#shop").html($("#shop").html() + "<abbr title='"+help.ClickerUpgrades[key]+"'>" +clickerUpgrades[key].html+"</abbr>")
+					shop.html(shop.html() + "<abbr title='"+help.ClickerUpgrades[key]+"'>" +clickerUpgrades[key].html+"</abbr>")
     			}else {
-    				$('#shop').html($('#shop').html()+ "<abbr title='"+message.unknown+"'>" +other.unknown+"</abbr>");
+					shop.html(shop.html()+ "<abbr title='"+message.unknown+"'>" +other.unknown+"</abbr>");
     				break;
     			}
     		}
@@ -373,11 +377,11 @@ $(document).ready(function() { //anti-console
 		$('#Unknown').click(function() {
 			Info(message.unknown);
 		});
-		for(var a=0;a < items.length;a++) {
+		for(a=0;a < items.length;a++) {
 			$('#'+items[a]).click(function() {
 				var index;
 				for(var b=0;b < items.length;b++) {
-					if($(this).attr('id') == items[b]) {
+					if($(this).attr('id') === items[b]) {
 						index = items[b];
 					}
 				}
@@ -397,7 +401,7 @@ $(document).ready(function() { //anti-console
 					clickerUpgradesReload();
 					clickerUpgradesfunction();
 					ReloadCPS();
-				} else if(clickerUpgrades[index].price == other.max) {
+				} else if(clickerUpgrades[index].cost === other.max) {
 					Info(message.max);
 				} else {
 					Info(message.funds); //málo peněz
@@ -414,7 +418,7 @@ $(document).ready(function() { //anti-console
 				clickerUpgradesReload();
 				break;
 			case "Target":
-				stat.targetHigher = stat.targetHigher*stat.targetHigherIndex
+				stat.targetHigher = stat.targetHigher*stat.targetHigherIndex;
 				targetsReload();
 				break;
 			case "Tax":
@@ -437,21 +441,22 @@ $(document).ready(function() { //anti-console
 	}
 
 	function upgradesfunction() {
-		a=0
-		items=Array();
-		$("#shop").html('<div id=center>Vylepšení<abbr title="'+help.Menus.Upgrades+'"><i class="info fa fa-question-circle-o"></i></abbr></div>')
+		var a = 0;
+		var items=Array();
+		var shop = $("#shop");
+		shop.html('<div id=center>Vylepšení<abbr title="'+help.Menus.Upgrades+'"><i class="info fa fa-question-circle-o"></i></abbr></div>');
 		for(var key in upgrades) {
-			items[a] = key
+			items[a] = key;
 			a++;
     		if(upgrades.hasOwnProperty(key)) {
-    			$("#shop").html($("#shop").html() + "<abbr title='"+help.Upgrades[key]+"'>" +upgrades[key].html+"</abbr>")
+    			shop.html(shop.html() + "<abbr title='"+help.Upgrades[key]+"'>" +upgrades[key].html+"</abbr>")
     		}
 		}
-		for(var a=0;a < items.length;a++) {
+		for(a=0;a < items.length;a++) {
 			$('#'+items[a]).click(function() {
 				var index;
 				for(var b=0;b < items.length;b++) {
-					if($(this).attr('id') == items[b]) {
+					if($(this).attr('id') === items[b]) {
 						index = items[b];
 					}
 				}
@@ -468,7 +473,7 @@ $(document).ready(function() { //anti-console
 					upgrade(index);
 					upgradesReload();
 					upgradesfunction();
-				} else if(upgrades[index].cost == other.max) {
+				} else if(upgrades[index].cost === other.max) {
 					Info(message.max);
 				} else {
 				Info(message.funds); //málo peněz
@@ -480,23 +485,8 @@ $(document).ready(function() { //anti-console
 		return Math.floor(Math.random() * (max - min + 1)) + min;
 	}
 
-	function showMoneySplitted(money) {
-		money = String(money);
-		var newMoney = "";
-		var numberCount = 0;
-		for(var a = money.length-1; a >= 0; a--) {
-			numberCount++;
-			newMoney=money[a]+newMoney;
-			if(numberCount==3 && a != 0) {
-				numberCount=0;
-				newMoney=" "+newMoney
-			}
-		}
-		return newMoney;
-	}
-
 	function showMoneyShortened(money, precision) {
-		moneyStr = String(Math.round(money));
+		var moneyStr = String(Math.round(money));
 
 		if(moneyStr.length < 4) {
 			return precision ? (Math.round(money*10)/10) : Math.round(money);
@@ -514,26 +504,25 @@ $(document).ready(function() { //anti-console
 	}
 
 	function AnimateText(text, color) {
-		a = 0;
-		$("#rollingText").show();
-		$("#rollingText").css("color", color)
-		$("#rollingText").html(text);
-		$("#rollingText").addClass("textAnimation");
+		var rollingText = $("#rollingText");
+		rollingText.show();
+		rollingText.css("color", color);
+		rollingText.html(text);
+		rollingText.addClass("textAnimation");
 		setTimeout(function() {
 			$("#rollingText").removeClass("textAnimation");
 		}, 1000)
 
 	}
 	function Leak() {
-		if (typeof leak != "undefined")
-			clearTimeout(leak);
 		Info(message.leak);
 		stat.leakMultiplier = stat.maxLeakMultiplier;
-		$("#progress").stop(true);
-		$("#progress").css('width', 250);
-		$("#progress").css('background', 'orange');
+		var progress = $("#progress");
+		progress.stop(true);
+		progress.css('width', 250);
+		progress.css('background', 'orange');
 		AnimateText(message.leak, 'orange');
-		$("#progress").animate({width: "0px"}, 5000);
+		progress.animate({width: "0px"}, 5000);
 		setTimeout(function() {
 			console.log("Leak OUT!");
 			$("#progress").css('background', "#4CAF50");
@@ -543,18 +532,17 @@ $(document).ready(function() { //anti-console
 	}
 
 	function Police() {
-		if (typeof police != "undefined")
-			clearTimeout(police);
 		Info(message.police);
 		stat.police = 1;
-		$("#progress").stop(true);
-		$("#progress").css('width', 250);
-		$("#progress").css('background', 'blue');
+		var progress = $("#progress");
+		progress.stop(true);
+		progress.css('width', 250);
+		progress.css('background', 'blue');
 		AnimateText(message.police, 'blue');
-		$("#progress").animate({width: "0px"}, 5000);
+		progress.animate({width: "0px"}, 5000);
 		setTimeout(function() {
 			console.log("Police OUT!");
-			$("#progress").css('background', "#4CAF50");
+			progress.css('background', "#4CAF50");
 			stat.police = 0;
 			$("#rollingText").hide();
 		}, 5000)
@@ -564,16 +552,16 @@ $(document).ready(function() { //anti-console
 		stat.money = Math.round((stat.money + ((stat.mps*stat.cpsHigher) * stat.leakMultiplier)/10)* 100)/100;
 		$('#money').text(showMoneyShortened(stat.money)); 	
 		var random = rand(0, 10000);
-		if(random >= stat.leakChance && !stat.police && stat.leakMultiplier != stat.maxLeakMultiplier) {
+		if(random >= stat.leakChance && !stat.police && stat.leakMultiplier !== stat.maxLeakMultiplier) {
 			Leak();
-		} else if(random <= stat.policeChance && !stat.police && stat.leakMultiplier != stat.maxLeakMultiplier) {
+		} else if(random <= stat.policeChance && !stat.police && stat.leakMultiplier !== stat.maxLeakMultiplier) {
 			Police()
 		}else if(random <= stat.autoClicker && !stat.police && !stat.lastClick){
 			AutoClicker();
-			console.log(stat.lastClick)
+			console.log(stat.lastClick);
 			stat.lastClick=7;
 		}
-		if(stat.lastClick!=0){
+		if(stat.lastClick !== 0){
 			stat.lastClick--;
 			console.log(stat.lastClick)
 		}
@@ -584,17 +572,21 @@ $(document).ready(function() { //anti-console
 	}
 
 	$(document).ready(function() {
-		volume = 1;
-		$(".click")[0].addEventListener('webkitAnimationEnd',function( event ) { $(".click")[0].id="click3"}, false);
-		$(".targetdiv")[0].addEventListener('webkitAnimationEnd',function( event ) {
-			if($(".targetdiv")[0].id!="targetdivAliens") {
-				$(".targetdiv")[0].id="targetdiv"
+		var volume = 1;
+		$('.target').attr('draggable', false);
+		$('.target').attr('draggable', false);
+		$(".click")[0].addEventListener('webkitAnimationEnd',function() { $(".click")[0].id="click3"}, false);
+		var targetDiv = $(".targetdiv");
+		targetDiv[0].addEventListener('webkitAnimationEnd',function() {
+			if(targetDiv[0].id !== "targetdivAliens") {
+				targetDiv[0].id = "targetdiv";
 			} else {
-				$(".targetdiv")[0].style.display="none"
+				targetDiv[0].style.display="none";
 			}
 		}, false);
 		$("#rollingText").hide();
-		$('#Volume').html('<i class="fa fa-volume-up fa-2x"></i>');
+		var volumeImage = $('#Volume');
+		volumeImage.html('<i class="fa fa-volume-up fa-2x"></i>');
 		Target();
 		$('#clickersMenu').click(function() {
 			clickersfunction();
@@ -611,13 +603,13 @@ $(document).ready(function() { //anti-console
 		$('#levelMenu').click(function() {
 			$("#shop").html("Nothing here");
 		});
-		$('#Volume').click(function() {
-			if (volume == 1) {
+		volumeImage.click(function() {
+			if (volume === 1) {
 				volume = 0;
-				$('#Volume').html('<i class="fa fa-volume-off fa-2x"></i>');
+				volumeImage.html('<i class="fa fa-volume-off fa-2x"></i>');
 			}else {
 				volume = 1;
-				$('#Volume').html('<i class="fa fa-volume-up fa-2x"></i>');
+				volumeImage.html('<i class="fa fa-volume-up fa-2x"></i>');
 			}
 		});
 		setInterval(AddMoney, 100);
@@ -625,10 +617,10 @@ $(document).ready(function() { //anti-console
 });
 </script>
 
-	<title>Hra</title>
+	<title>Hacker Clicker</title>
 </head>
-<body>
-<div class="nadpis">Hra</div>
+<body oncontextmenu="return false;">
+<div class="nadpis">Hacker Clicker</div>
 
 <div id="game">
 	<div id="menu">
@@ -645,16 +637,16 @@ $(document).ready(function() { //anti-console
 	</div>
 	<div id="main">
 		<button id="Volume"><i class="fa fa-volume-up fa-2x"></i></button>
-		<div id="moneydiv"><span id="money">0</span>  <span id="dolar"><i class="fa fa-money"></i></span></div>
+		<div id="moneydiv"><span id="money">0</span>  <span class="dolar"><i class="fa fa-money"></i></span></div>
 		<div id="cpsDiv"><span id="cps">0</span>$/sec</div>
 		<div id="targetdiv" class="targetdiv">
-			<img src="img/targets/MP3.png" class="target" id="target">
+			<img src="img/targets/MP3.png" class="target" id="target" alt="target">
 		</div>
 		<div id="rollingText" class="target"><span>Bezpečnostní trhlina objevena</span></div>
 		<div id="progressbar"><div id="progress"></div></div>
 		<div id="infoHolder"><span id="info"></span></div>
 	</div>
-	<img src="img/click.png" id="click3" class="click">
+	<img src="img/click.png" id="click3" class="click" alt="click">
 		
 </div>
 <br/>
