@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="libs/font awesome/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
 <script type="text/javascript">
-$(document).ready(function() { //anti-console
+//$(document).ready(function() { //anti-console
 	var stat = {
 		money: 0,
 		mpc: 1,
@@ -570,10 +570,42 @@ $(document).ready(function() { //anti-console
 	function ReloadCPS() {
 		$("#cps").html(showMoneyShortened(stat.mps*stat.cpsHigher, 10))
 	}
+	
+	function save() {
+		var saveGame = {};
+		saveGame.stat = stat;
+		saveGame.stat.police = 0;
+		saveGame.stat.leakMultiplier = 1;
+		saveGame.targets = targets;
+		saveGame.clickers = clickers;
+		saveGame.clickerUpgrades = clickerUpgrades;
+		saveGame.upgrades = upgrades;
+		localStorage.date = new Date().toLocaleString();
+		localStorage.save = btoa(encodeURI(JSON.stringify(saveGame)));
+	}
 
 	$(document).ready(function() {
+		if (localStorage.save !== undefined && confirm("Chcete načíst uloženou hru z "+localStorage.date+"?")) {
+			try{
+				var saveGame = JSON.parse(decodeURI(atob(localStorage.save)));
+				stat = saveGame.stat;
+				targets = saveGame.targets;
+				clickers = saveGame.clickers;
+				clickerUpgrades = saveGame.clickerUpgrades;
+				upgrades = saveGame.upgrades;
+				for(var a in targets) {
+					if(targets[a].cost === other.bought)
+						$('#targetdiv').html('<img src="img/targets/'+a+'.png" id="target" class="target" alt="target">'); //načtení obrázku
+				}
+				ReloadCPS();
+				alert("Načtení bylo úspěšné");
+			} catch(error) {
+				alert("Uložená hra je poškozena!");
+				delete localStorage.save;
+				delete localStorage.date;
+			} 
+		}
 		var volume = 1;
-		$('.target').attr('draggable', false);
 		$('.target').attr('draggable', false);
 		$(".click")[0].addEventListener('webkitAnimationEnd',function() { $(".click")[0].id="click3"}, false);
 		var targetDiv = $(".targetdiv");
@@ -614,7 +646,7 @@ $(document).ready(function() { //anti-console
 		});
 		setInterval(AddMoney, 100);
 	} );
-});
+//});
 </script>
 
 	<title>Hacker Clicker</title>
