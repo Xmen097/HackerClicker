@@ -174,8 +174,11 @@
 				stat.totalMoney += (stat.mpc * stat.targetHigher) * stat.leakMultiplier;
 				$(".targetdiv")[0].id="targetdivClicked";
 			} else {
-				stat.money += (stat.mpc * stat.targetHigher) * -1;
-				stat.totalMoney += (stat.mpc * stat.targetHigher) * -1;
+				if (stat.money - (stat.mpc * stat.targetHigher) * -1 > 0) {
+					stat.money += (stat.mpc * stat.targetHigher) * -1;
+				} else {
+					stat.money = 0;
+				}
 				$(".targetdiv")[0].id="targetdivClicked";
 			}
 			$('#money').text(showMoneyShortened(stat.money));
