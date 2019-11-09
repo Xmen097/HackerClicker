@@ -174,8 +174,8 @@
 				stat.totalMoney += (stat.mpc * stat.targetHigher) * stat.leakMultiplier;
 				$(".targetdiv")[0].id="targetdivClicked";
 			} else {
-				if (stat.money - (stat.mpc * stat.targetHigher) * -1 > 0) {
-					stat.money += (stat.mpc * stat.targetHigher) * -1;
+				if (stat.money - (stat.mpc * stat.targetHigher) > 0) {
+					stat.money -= (stat.mpc * stat.targetHigher);
 				} else {
 					stat.money = 0;
 				}
