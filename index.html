@@ -196,6 +196,8 @@
 		upgrades.Cops.maxAmount = 0;
 		upgrades.Helper.maxAmount = 0;
 		upgradesReload();
+		delete localStorage.save;
+		delete localStorage.date;
 		$('.target').click(function() {
 			var progressElement = $("#progress");
 			var progressBarElement = $("#progressbar");
