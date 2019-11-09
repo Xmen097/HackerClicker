@@ -575,7 +575,7 @@
 	
 	function save() {
 		var saveGame = {};
-		saveGame.stat = stat;
+		saveGame.stat = Object.assign({}, stat);
 		saveGame.stat.police = 0;
 		saveGame.stat.leakMultiplier = 1;
 		saveGame.targets = targets;
